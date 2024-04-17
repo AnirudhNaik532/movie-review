@@ -31,7 +31,7 @@ public class ReviewServiceImpl implements ReviewService{
 @Override
 public String createReview(ReviewDto reviewDto) {
     logger.info("Adding review using mongodb insert");
-    Review addReview =reviewRepository.insert(new Review(reviewDto.getBody()));
+    Review addReview =reviewRepository.insert(new Review(reviewDto.getReviewBody()));
     Movie movieByImdbId = movieRepository.findMovieByImdbId(reviewDto.getImdbId())
             .orElseThrow(() -> new MovieNotPresentException(Constants.MOVIE_NOTFOUND));
 
